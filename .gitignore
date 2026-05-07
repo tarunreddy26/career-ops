@@ -26,6 +26,8 @@ modes/_profile.md
 .resolved-prompt-*
 node_modules/
 bun.lock
+cv.pdf
+drafts/
 
 # OS
 .DS_Store
