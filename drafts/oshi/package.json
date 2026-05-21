@@ -1,0 +1,41 @@
+{
+  "name": "oshi-ai-vtuber-backend",
+  "version": "1.0.0",
+  "description": "Oshi AI VTuber — TTS Streaming Microservice",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec ts-node src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test:tts": "ts-node src/scripts/test-tts.ts",
+    "test:ws": "ts-node src/scripts/test-ws.ts",
+    "test:pipeline": "ts-node src/scripts/test-pipeline.ts",
+    "test:load": "ts-node src/scripts/test-load.ts",
+    "test:bargein": "ts-node src/scripts/test-bargein.ts",
+    "test:e2e": "ts-node src/scripts/test-e2e-latency.ts",
+    "test:genki": "ts-node src/scripts/test-genki.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.2.0",
+    "@fastify/rate-limit": "^10.3.0",
+    "@fastify/websocket": "^11.2.0",
+    "@supabase/supabase-js": "^2.100.0",
+    "dotenv": "^17.3.1",
+    "fastify": "^5.8.2",
+    "ws": "^8.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/ws": "^8.18.1",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
