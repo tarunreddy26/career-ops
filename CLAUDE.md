@@ -61,6 +61,8 @@ AI-powered job search automation built on Claude Code: pipeline tracking, offer 
 | `analyze-patterns.mjs` | Pattern analysis script (JSON output) |
 | `followup-cadence.mjs` | Follow-up cadence calculator (JSON output) |
 | `data/follow-ups.md` | Follow-up history tracker |
+| `batch-verify-reports.mjs` | Playwright pool to upgrade batch reports from `unconfirmed` to verified liveness (default concurrency 2) |
+| `qa-cache.mjs` | Q&A cache for the apply mode: `lookup`, `add`, `list`, `view`, `stats`. Storage: `data/qa-cache.jsonl` |
 | `reports/` | Evaluation reports (format: `{###}-{company-slug}-{YYYY-MM-DD}.md`). Blocks A-F + G (Posting Legitimacy). Header includes `**Legitimacy:** {tier}`. |
 
 ### OpenCode Commands

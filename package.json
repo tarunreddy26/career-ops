@@ -14,7 +14,9 @@
     "update": "node update-system.mjs apply",
     "rollback": "node update-system.mjs rollback",
     "liveness": "node check-liveness.mjs",
-    "scan": "node scan.mjs"
+    "scan": "node scan.mjs",
+    "verify-batch": "node batch-verify-reports.mjs",
+    "qa-cache": "node qa-cache.mjs"
   },
   "keywords": [
     "ai",

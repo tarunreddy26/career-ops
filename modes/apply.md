@@ -56,17 +56,46 @@ Identificar TODAS las preguntas visibles:
 
 Clasificar cada pregunta:
 - **Ya respondida en Section G** → adaptar la respuesta existente
+- **Match en Q&A cache** → reusar la respuesta cacheada como base (ver Paso 4.5)
 - **Nueva pregunta** → generar respuesta desde el report + cv.md
+
+## Paso 4.5 — Consultar el Q&A cache
+
+Antes de generar una respuesta desde cero, consulta el cache de respuestas previas.
+
+**Lookup léxico (rápido, exact + token overlap):**
+
+```bash
+node qa-cache.mjs lookup "<pregunta exacta del formulario>"
+```
+
+Devuelve JSON con top 3 matches y score 0-1. Reglas:
+- **score ≥ 0.7** → usar la respuesta cacheada casi tal cual (solo adaptar nombre de empresa y 1 detalle del JD)
+- **score 0.4-0.7** → usar la respuesta cacheada como base, reescribir 30-50%
+- **score < 0.4 (o `matches: []`)** → no hay match léxico, pero la pregunta podría ser semánticamente equivalente a una cacheada
+
+**Lookup semántico (cuando el léxico falla):**
+
+Si `lookup` devuelve `matches: []` pero la pregunta es genérica (motivación, cultura, salario, conflict, fortalezas/debilidades, etc.), ejecuta:
+
+```bash
+node qa-cache.mjs view
+```
+
+Lee el markdown y haz tú el match semántico. Ejemplo: "What draws you to working with us?" no comparte tokens con "Why do you want to work at this company?" pero es la misma pregunta — el cache las tendría con tags compartidos como `why-this-role`.
+
+Si encuentras una equivalente, úsala como base y refina.
 
 ## Paso 5 — Generar respuestas
 
-Para cada pregunta, generar la respuesta siguiendo:
+Para cada pregunta, generar la respuesta siguiendo (en orden de prioridad):
 
-1. **Contexto del report**: Usar proof points del bloque B, historias STAR del bloque F
-2. **Section G previa**: Si existe una respuesta draft, usarla como base y refinar
-3. **Tono "I'm choosing you"**: Mismo framework del auto-pipeline
-4. **Especificidad**: Referenciar algo concreto del JD visible en pantalla
-5. **career-ops proof point**: Incluir en "Additional info" si hay campo para ello
+1. **Q&A cache match** (si hubo en Paso 4.5): usar la respuesta cacheada como base
+2. **Contexto del report**: Usar proof points del bloque B, historias STAR del bloque F
+3. **Section G previa**: Si existe una respuesta draft, usarla como base y refinar
+4. **Tono "I'm choosing you"**: Mismo framework del auto-pipeline
+5. **Especificidad**: Referenciar algo concreto del JD visible en pantalla
+6. **career-ops proof point**: Incluir en "Additional info" si hay campo para ello
 
 **Formato de output:**
 
@@ -97,7 +126,35 @@ Notas:
 Si el candidato confirma que envió la aplicación:
 1. Actualizar estado en `applications.md` de "Evaluada" a "Aplicado"
 2. Actualizar Section G del report con las respuestas finales
-3. Sugerir siguiente paso: `/career-ops contacto` para LinkedIn outreach
+3. **Guardar respuestas en Q&A cache** para reusar en futuras aplicaciones (ver Paso 6.5)
+4. Sugerir siguiente paso: `/career-ops contacto` para LinkedIn outreach
+
+## Paso 6.5 — Guardar en Q&A cache
+
+Para cada pregunta de texto libre del formulario (no para Yes/No ni dropdowns), guarda la respuesta final en el cache:
+
+```bash
+printf '%s' "<respuesta final>" | node qa-cache.mjs add \
+  --question "<pregunta exacta>" \
+  --company "<empresa>" \
+  --tags "tag1,tag2"
+```
+
+**Tags sugeridos** (elige los que apliquen):
+- `why-this-role`, `why-this-company`, `motivation`
+- `strengths`, `weaknesses`, `growth-area`
+- `salary`, `comp-expectations`
+- `availability`, `notice-period`, `relocation`, `visa`
+- `conflict`, `failure`, `leadership`, `teamwork`
+- `star`, `technical`, `architecture`, `system-design`
+- `culture-fit`, `values`, `diversity`
+
+Si la pregunta ya existía (mismo hash), `qa-cache.mjs add` actualiza la entrada, suma `times_used`, dedupea tags y añade la nueva empresa a `companies`. La última respuesta gana — guarda la versión refinada, no el primer draft.
+
+**Qué NO guardar:**
+- Respuestas hiper-específicas a una empresa (ej. "¿Por qué Stripe específicamente?")
+- Datos personales que ya están en `cv.md` (fecha de nacimiento, teléfono, dirección)
+- Respuestas Yes/No de dropdowns (no tienen ROI de cacheo)
 
 ## Scroll handling
 

@@ -92,6 +92,28 @@ El worker produce:
 3. Línea de tracker en `batch/tracker-additions/{id}.tsv`
 4. JSON de resultado por stdout
 
+## Verificación post-batch (Playwright pool)
+
+Los workers `claude -p` no pueden usar Playwright y marcan sus reports con `**Verification:** unconfirmed (batch mode)`. Una vez terminado el batch, ejecuta:
+
+```bash
+node batch-verify-reports.mjs            # verifica todos los unconfirmed
+node batch-verify-reports.mjs --dry-run  # lista sin tocar archivos
+node batch-verify-reports.mjs --concurrency 3   # más rápido (cuidado con RAM en 8GB)
+node batch-verify-reports.mjs --report 042      # solo un report
+node batch-verify-reports.mjs --all              # re-verifica todos
+```
+
+El script:
+1. Escanea `reports/` por reports con `**Verification:** unconfirmed`
+2. Extrae el `**URL:**` de cada report
+3. Lanza un pool de Playwright (default concurrency 2) que comparte un browser y abre N contexts en paralelo
+4. Reusa `classifyLiveness` de `liveness-core.mjs` (la misma lógica que `scan` y `check-liveness`)
+5. Reescribe la línea `**Verification:**` in-place con `active|expired|uncertain (verified YYYY-MM-DD — reason)`
+6. Sale con exit code 1 si encuentra reports expirados — el usuario decide si marcar como `Discarded` en `applications.md`
+
+Default concurrency es 2 para no saturar Macs de 8GB. Para batches >50 reports en máquinas con más RAM, subir a 3-4 es seguro.
+
 ## Gestión de errores
 
 | Error | Recovery |
