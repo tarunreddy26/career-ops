@@ -1,7 +1,7 @@
 # Tarun Reddy Alla
 
 Phoenix, AZ | (470) 437-2147 | tarunreddy.alla1@gmail.com
-LinkedIn: linkedin.com/in/tarun-reddy-alla | GitHub: github.com/tarunreddy26
+LinkedIn: linkedin.com/in/tarun-reddy-alla-6a50a41a8 | GitHub: github.com/tarunreddy26
 
 ## Professional Summary
 
