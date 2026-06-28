@@ -203,16 +203,36 @@ High-interest but lower-power (keep informed/engaged): **Production Supervisors,
 
 ---
 
-### #8 — Project Closure Report  *(Closing)*  — **⚠️ actual narrative not yet provided**
-**What it is:** the formal wrap-up. Confirms deliverables were met against the charter's objectives, captures **lessons learned**, and releases the team. The course specifically required at least one **"What Went Right?"** and one **"What Went Wrong?"**, plus how you'd apply those lessons going forward.
+### #8 — Project Closure Report  *(Closing)*  ✅
+**What it is:** the formal wrap-up. Confirms deliverables were met against the charter's objectives, captures **lessons learned**, and releases the team. The course required at least one **"What Went Right?"** and one **"What Went Wrong?"**, plus how you'd apply the lessons.
 
-**What you sent was the assignment prompt, not your team's written report.** You'll want to retrieve the actual closure narrative (Canvas). When you do, it should answer:
-- Did we hit the targets? (+30% efficiency, −20% waste, 95% defect-free, on $1M / 12 months)
-- **What Went Right** — e.g., strong stakeholder communication kept the sponsor aligned; phased installation avoided production shutdown.
-- **What Went Wrong** — e.g., underestimated staff resistance / training time; a supplier delay ate schedule slack.
-- **Lessons learned** — what we'd change next time and how it improves the next project.
+**Execution summary:** the team ran all 7 phases (planning → requirements/design → layouts/upgrades → installation/automation → testing/optimization → training/validation → production/monitoring) and finished on schedule **except for a 5-day slip caused by one supplier**.
 
-> **Interview tip:** "What went wrong" answers are where PM candidates win or lose. Pick a *real* lesson (scope was a bit ambitious for the timeline; the WBS could have been more granular; risk #1 — supplier — was our most likely risk and we'd have built more schedule buffer). Show reflection, not blame.
+**Results achieved vs. the charter's targets:**
+
+| Metric | Charter target | Actual result | Verdict |
+|---|---|---|---|
+| Production efficiency | +30% | **+32% production increase** | ✅ **Exceeded** |
+| Cost / waste | −20% material waste | **−22% labor cost** | ✅ Exceeded (note: measured as labor cost, not material waste) |
+| Automation | (enabler goal) | **95% automation achieved** | ✅ |
+| Workforce | skill development | **90% staff training success** | ✅ |
+
+**What Went Right:** *Early stakeholder engagement.* By engaging stakeholders at the start, the team got clear requirements up front and had **almost no scope creep** or rework. → This is the payoff of Deliverables #6 and #7 working as intended.
+
+**What Went Wrong:** *A 5-day installation slippage due to a supplier delay.* → **This is the single best story in the whole project** (see callout below).
+
+**Lessons learned (7):**
+1. **Engage stakeholders early** — smoother approvals, fewer communication gaps.
+2. **Reliable vendors are essential** — need strict **SLAs** and verified backup vendors for critical machinery.
+3. **Change management is not optional** — early worker resistance showed the need for transparent comms + pre-implementation training.
+4. **Always build buffer time into the schedule** — tight timelines left no room for delays; add buffer to critical phases like procurement.
+5. **Communication matrices work** — structured updates kept everyone aligned and built trust.
+6. **Proactive risk planning pays off** — risks from the register (supply delays, labor shortages) actually materialized, and pre-built mitigations kept them in control.
+7. **Training is a key success factor** — hands-on training drove high adoption and cut the post-install learning curve.
+
+> ⭐ **YOUR STRONGEST INTERVIEW STORY — connect the risk register to reality.** Your #1-scored risk in the Risk Register (score 16) was *"unreliable supplier → delayed deliveries."* In closing, **that exact risk materialized.** Because the team had already planned mitigations (backup-supplier list, safety stock, buffer), the impact was contained to just **5 days** instead of derailing the project. That's a complete, real loop: *we identified the top risk → it came true → our pre-planned response limited the damage → and the lesson learned was to build even more schedule buffer next time.* As the **Engineering Lead** who owned the installation track, this slip was in your lane — you can own this story directly. **Practice telling it in STAR form.**
+
+> **Honest caveat for the interview:** these are *simulated* results (the team set the numbers as the planned outcome of the exercise), so present them as "our project plan was designed to deliver +32% efficiency" rather than claiming you physically rebuilt a factory. Interviewers respect the distinction, and the *process* is what's being evaluated anyway.
 
 ---
 
@@ -252,11 +272,10 @@ When asked "what did *you* do," anchor on this: *"I owned the engineering track 
 | Item | Why you want it | How to get it |
 |---|---|---|
 | **#3 Schedule (.mpp)** | To speak to critical path, durations, dependencies, Gantt | Open on a Windows/lab PC → screenshot Gantt, or find the PDF on Canvas |
-| **#4 RACI Matrix** | Confirms your exact responsibilities; common interview probe | Re-send the file; §4 table is a reconstruction |
-| **#8 Closure narrative** | Your actual "What Went Right / Wrong" + results — the most interview-relevant piece | Pull your team's submitted report from Canvas |
-| **WBS (if separate)** | To describe the work hierarchy | Check if it's its own doc or embedded in the MS Project file |
+| **#4 RACI Matrix (.mpp)** | Confirms your exact responsibilities; common interview probe | Same as #3 — it's also an MS Project file; §4 table is a reconstruction until then |
+| **WBS (if separate)** | To describe the work hierarchy | Likely embedded in the MS Project file (the indented task list = the WBS) |
 
-Send those three and I'll fold them in and we'll have the complete picture.
+Both remaining items are `.mpp` (MS Project) files a Mac can't open. **The closure report (#8) is now fully incorporated.** Once you get the two `.mpp` files into a viewable form (Windows/lab PC screenshot, or Canvas PDF), send them and we'll have the complete picture.
 
 ---
 
@@ -266,6 +285,6 @@ Send those three and I'll fold them in and we'll have the complete picture.
 - "How do you handle scope creep?" → The Out-of-Scope column (#2).
 - "How do you prioritize risks?" → Probability × Impact 5×5 matrix (#5).
 - "How do you manage stakeholders?" → Power/Interest grid → tailored comms cadence (#6→#7).
-- "Tell me about a time something went wrong." → Your closure lessons (#8 — retrieve it).
+- "Tell me about a time something went wrong." → The supplier delay (Risk #1 materialized) → contained to 5 days by pre-planned mitigation (#5→#8). Your strongest story.
 - "What's a critical path?" → Define it, then point to installation gating go-live (#3).
 - "What was *your* contribution on the team?" → Engineering Lead lane (§5).
