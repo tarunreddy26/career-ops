@@ -101,44 +101,47 @@ Note the bulk of the deliverables are **Planning** — that's deliberate. Projec
 
 ---
 
-### #3 — Project Schedule (MS Project)  *(Planning)*  — **⚠️ file not yet reviewed (.mpp)**
-**What it is:** takes the WBS work packages, estimates durations, sets dependencies (Task B can't start until Task A finishes), and lays them on a calendar. MS Project then computes the **critical path** — the longest chain of dependent tasks that determines the minimum project duration. Any delay on a critical-path task delays the whole project.
+### #3 — Project Schedule (MS Project)  *(Planning)*  ✅
+**What it is:** takes the WBS work packages, sets durations and dependencies (Task B can't start until Task A finishes), and lays them on a calendar. MS Project computes the **critical path** — the longest chain of dependent tasks that sets the minimum project duration.
 
-**What you already know about it (from the Charter's milestone schedule):** a **7-phase** plan running **Feb 15 → May 15, 2025** (in the simulation's compressed timeline):
-1. Project Preparation / feasibility (due 02/15)
-2. Collect Requirements (02/28)
-3. Design Phase (03/15)
-4. Development / Installation (04/01)
-5. Prototype/Pilot Testing (04/15)
-6. User Acceptance & Training (04/30)
-7. Go-Live & Lessons Learned (05/15)
+**What the actual file shows:** a **31-task schedule, 61 days, Thu 2/20/25 → Thu 5/15/25**, organized into **5 summary tasks that ARE the PMBOK process groups (and double as the WBS):**
 
-**Key vocabulary to be ready for:** *critical path, milestone, dependency (finish-to-start), Gantt chart, baseline, slack/float, duration vs. effort.*
+- **Initiation:** Evaluation & Recommendation → Develop Charter → Submit Charter → Sponsor Reviews → Charter Signed/Approved
+- **Planning:** Needs Assessment → Determine Project Team → Team Kickoff → Develop Project Plan → Submit Plan → Plan Approval
+- **Execution:** Infrastructure Upgrade → Equipment Modernization → Digital Transformation → Workforce Training → Sustainability Initiative
+- **Control:** Project Management → Risk Management → Performance Monitoring → Compliance & QA
+- **Closeout:** Final Audits → Lessons Learned → Update Records → Formal Acceptance → Archive Documents
 
-> ⚠️ **To complete this section** you need to open the `.mpp` (it's Windows-only software — your Mac couldn't open it). Options: open it on a Windows/lab PC and screenshot the Gantt; check Canvas for the PDF you submitted; or just be ready to describe it verbally. See §7.
+**Key features visible in the file:**
+- **Predecessors column** = the dependencies (mostly finish-to-start), which produce the staircase Gantt and define the **critical path**.
+- **Durations are all "1 day"** — simplified for the academic exercise (see "be ready to defend" below).
+- The indented summary→subtask structure **is the WBS** — there is no separate WBS document; it lives here.
+
+**Be ready to defend:**
+- *"Why is every task 1 day?"* → "We simplified durations to focus on sequencing, dependencies, and the PM process rather than realistic estimating. In reality I'd estimate each work package, likely with three-point estimation."
+- *"Where's your WBS?"* → "Embedded in the MS Project file — the indented summary tasks (Initiation/Planning/Execution/Control/Closeout) are the WBS hierarchy."
+
+**Vocabulary:** *critical path, float/slack, milestone, dependency types (FS/SS/FF/SF), Gantt chart, baseline, resource leveling.*
 
 ---
 
-### #4 — RACI / Responsibility Assignment Matrix  *(Planning)*  — **⚠️ file not provided**
-**What it is:** a grid with **tasks/deliverables down the side** and **people across the top**, where each cell is one of:
-- **R = Responsible** — does the work
-- **A = Accountable** — owns the outcome, signs off (exactly ONE per task)
-- **C = Consulted** — gives input (two-way)
-- **I = Informed** — kept in the loop (one-way)
+### #4 — Responsibility Assignment Matrix (RACI)  *(Planning)*  ✅
+**What it is:** the assignment of a named owner to every piece of work. Classic RACI = **R**esponsible (does it), **A**ccountable (owns it, one person), **C**onsulted, **I**nformed. Your team built it **inside MS Project** as a *resource-loaded schedule* — the same 31-task list as #3, but with the **Resource Names** column filled in with real people (GAURAV, CHRIS, TARUN, ROHIT, Rishitha) plus a "Roles Assigned" column.
 
-**What yours almost certainly looked like** (based on the team roles in the charter — confirm against your actual file):
+**The actual assignments (from the file):**
 
-| Task | PM (Gaurav) | Eng. Lead (Tarun) | IT (Rohit) | Training (Rishitha) | Sponsor (Chris) |
-|---|---|---|---|---|---|
-| Procure & install machines | A | **R** | C | I | I |
-| Implement MES software | A | C | **R** | I | I |
-| Factory layout redesign | A | **R** | C | I | C |
-| Staff training program | A | I | C | **R** | I |
-| Budget approval / funding | C | I | I | I | **A** |
+| Task | Owner |
+|---|---|
+| Evaluation & Recommendation | **TARUN** |
+| Develop/Submit Charter, Develop/Submit Plan, Project Management, Final Audits, Archive Documents | GAURAV |
+| Sponsor Reviews, Charter Signed, Plan Approval, Formal Acceptance | CHRIS (Sponsor) |
+| Needs Assessment, Determine Team, Workforce Training, Sustainability, Compliance & QA, Update Records | Rishitha |
+| Equipment Modernization, Performance Monitoring | ROHIT |
+| **Infrastructure Upgrade, Digital Transformation, Risk Management** | **TARUN** |
 
-**Why it matters:** RACI kills the two classic project failures — "I thought *you* were doing that" (no R) and "too many cooks" (multiple A's). As **Engineering Lead**, you were the **R** on the physical installation and layout work.
+**Why it matters:** RACI kills the two classic project failures — "I thought *you* were doing that" (no owner) and "too many cooks" (multiple owners). Every task here has exactly one name.
 
-> ⚠️ **Gap to fill:** Get the actual RACI file. The grid above is a reconstruction — your real one may differ. See §7.
+> ⭐ **YOUR ACTUAL ROLE (important correction):** The charter labeled you "Engineering Lead," but the RACI shows your real task ownership was **(1) Evaluation & Recommendation** — the upfront business-case analysis, **(2) Infrastructure Upgrade**, **(3) Digital Transformation**, and **(4) Risk Management**. The last one matters most: **you owned Risk Management**, which means the supplier-delay story (the #1 risk that materialized) is *directly yours*. Reconcile the "Engineering Lead" label with these tasks before the interview so your story is consistent — recommended framing: *"I led the upfront evaluation that built the business case, owned infrastructure and digital-transformation work in execution, and managed the risk register."*
 
 ---
 
@@ -236,17 +239,19 @@ High-interest but lower-power (keep informed/engaged): **Production Supervisors,
 
 ---
 
-## 5. Your specific role — Engineering Lead
+## 5. Your specific role — what you actually owned
 
-In the charter you're the **Engineering Lead**, responsible for *equipment installation and the physical modernization*. Across the deliverables, your lane was:
-- **Charter:** named owner of equipment installation.
-- **Scope/WBS:** the machinery replacement, automation install, and **factory layout redesign** work packages.
-- **Schedule:** Phases 3–4 (Design + Development/Installation) — likely **on the critical path**, since installation gates pilot testing and go-live.
-- **RACI:** the **R** (Responsible) for procure/install machines and layout redesign.
-- **Risk:** owner of **Risk #2** (equipment maintenance/breakdown) — preventive maintenance + backup service contracts.
-- **Stakeholders:** worked with Engineering/Maintenance team, Vendors/Equipment Suppliers, Safety/HSE.
+⚠️ **Note the two sources disagree — reconcile before the interview.** The **charter** labels you "Engineering Lead." The **RACI/schedule (#4)** shows your actual task ownership was different — and arguably more PM-flavored. Pick one consistent story. The RACI is the more concrete evidence, so anchor on it:
 
-When asked "what did *you* do," anchor on this: *"I owned the engineering track — equipment procurement and installation, the factory-layout redesign, and the maintenance-related risk. That work was on the critical path because installation had to finish before we could pilot and go live, all while the constraint was that the factory had to keep producing."*
+**Your actual task assignments (from the MS Project RACI, #4):**
+- **Evaluation & Recommendation** — the upfront business-case analysis that justified launching the project (an *Initiation* task — strong opener).
+- **Infrastructure Upgrade** — execution.
+- **Digital Transformation** — execution.
+- **Risk Management** ⭐ — you owned the project's risk tracking and response.
+
+**Why the Risk Management assignment is your ace:** the project's **#1-scored risk (supplier delay)** is exactly what materialized in closure (the 5-day slip). As the **risk owner**, that whole story — *identified the top risk → it came true → pre-planned mitigation contained it to 5 days → lesson was build more buffer* — is **directly yours**, not a team-level anecdote. Lead with it.
+
+**Recommended one-line answer to "what did you do":** *"I led the upfront evaluation and recommendation that built the business case for the project, owned the infrastructure-upgrade and digital-transformation workstreams during execution, and managed the project's risk register — including the supplier risk that actually materialized, which we contained to a 5-day slip because the mitigation was already in place."*
 
 ---
 
@@ -267,15 +272,14 @@ When asked "what did *you* do," anchor on this: *"I owned the engineering track 
 
 ---
 
-## 7. What to retrieve to make this complete
+## 7. Status — all 8 deliverables reviewed ✅ + hands-on prep
 
-| Item | Why you want it | How to get it |
-|---|---|---|
-| **#3 Schedule (.mpp)** | To speak to critical path, durations, dependencies, Gantt | Open on a Windows/lab PC → screenshot Gantt, or find the PDF on Canvas |
-| **#4 RACI Matrix (.mpp)** | Confirms your exact responsibilities; common interview probe | Same as #3 — it's also an MS Project file; §4 table is a reconstruction until then |
-| **WBS (if separate)** | To describe the work hierarchy | Likely embedded in the MS Project file (the indented task list = the WBS) |
+All eight deliverables are now incorporated (the schedule #3 and RACI #4 `.mpp` files were viewed via a web viewer). The WBS turned out to be **embedded in the MS Project file** (the indented Initiation/Planning/Execution/Control/Closeout hierarchy), so there was never a separate WBS doc.
 
-Both remaining items are `.mpp` (MS Project) files a Mac can't open. **The closure report (#8) is now fully incorporated.** Once you get the two `.mpp` files into a viewable form (Windows/lab PC screenshot, or Canvas PDF), send them and we'll have the complete picture.
+**Recommended hands-on before the interview (~2 hours):** for a PM role, being able to say "I've built a schedule in MS Project" with real familiarity is an edge.
+- **Open your own `.mpp` files on Mac for free:** install **ProjectLibre** or **GanttProject** (free, open-source, run on macOS, open `.mpp`).
+- **Do 4 exercises** in a tiny 5-task practice project: (1) create tasks + durations, (2) link dependencies and watch the Gantt rearrange, (3) turn on the **critical path** view, (4) assign a resource to each task (that's how #4 was made).
+- **Be able to define:** critical path, float/slack, dependency types (FS/SS/FF/SF), milestone, baseline, resource leveling.
 
 ---
 
