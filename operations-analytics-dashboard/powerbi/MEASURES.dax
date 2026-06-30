@@ -1,0 +1,47 @@
+// MEASURES.dax — Power BI DAX measures for the Operations Analytics Dashboard.
+// Paste these into Power BI Desktop (Modeling > New measure) after loading the
+// fact_orders / dim_* tables. They reproduce the KPIs the Plotly build shows.
+// Convention: measures live in fact_orders unless noted.
+
+// ---------- Throughput ----------
+Orders Completed =
+CALCULATE ( COUNTROWS ( fact_orders ), fact_orders[is_completed] = 1 )
+
+Units Completed =
+CALCULATE ( SUM ( fact_orders[units] ), fact_orders[is_completed] = 1 )
+
+// 7-day moving average of completed orders (needs a marked date table: dim_date).
+Orders Completed (7d Avg) =
+AVERAGEX (
+    DATESINPERIOD ( dim_date[date], MAX ( dim_date[date] ), -7, DAY ),
+    [Orders Completed]
+)
+
+// ---------- Cycle time ----------
+// Cycle time is right-skewed, so MEDIAN is the honest headline; mean is shown for contrast.
+Avg Cycle Time (h) =
+CALCULATE ( AVERAGE ( fact_orders[cycle_time_h] ), fact_orders[is_completed] = 1 )
+
+Median Cycle Time (h) =
+CALCULATE ( MEDIAN ( fact_orders[cycle_time_h] ), fact_orders[is_completed] = 1 )
+
+P90 Cycle Time (h) =
+CALCULATE (
+    PERCENTILE.INC ( fact_orders[cycle_time_h], 0.90 ),
+    fact_orders[is_completed] = 1
+)
+
+// ---------- Cost ----------
+Total Cost =
+CALCULATE ( SUM ( fact_orders[total_cost] ), fact_orders[is_completed] = 1 )
+
+Cost per Unit =
+DIVIDE ( [Total Cost], [Units Completed] )
+
+// ---------- Period-over-period (trend on KPI cards) ----------
+Orders Completed (Prev Month) =
+CALCULATE ( [Orders Completed], DATEADD ( dim_date[date], -1, MONTH ) )
+
+Orders MoM % =
+DIVIDE ( [Orders Completed] - [Orders Completed (Prev Month)],
+         [Orders Completed (Prev Month)] )

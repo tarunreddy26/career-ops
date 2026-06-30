@@ -1,0 +1,9 @@
+# Regeneratable artifacts — rebuilt by `python src/run_pipeline.py` in seconds.
+output/ops.db
+data/raw/operations_raw.csv
+
+# Keep output/dashboard.html committed so it can be previewed without running.
+!output/dashboard.html
+
+__pycache__/
+*.pyc
