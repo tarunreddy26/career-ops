@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarun Reddy Alla — CV</title>
+<style>
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/space-grotesk-latin.woff2') format('woff2');
+    font-weight: 300 700; font-style: normal; font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('./fonts/dm-sans-latin.woff2') format('woff2');
+    font-weight: 100 1000; font-style: normal; font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #333333;
+    --muted: #666666;
+    --faint: #8a8a8a;
+    --rule: #d5d5d5;
+    --bar: #1a1a1a;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    background: #ffffff;
+  }
+
+  .page { width: 100%; }
+
+  a { color: var(--ink-soft); text-decoration: none; white-space: nowrap; }
+
+  /* === HEADER === */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding-bottom: 16px;
+    margin-bottom: 4px;
+  }
+
+  .photo {
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px;
+    border-radius: 6px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    border: 1px solid #e0e0e0;
+  }
+
+  .header-text { flex: 1; }
+
+  .header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin-bottom: 5px;
+  }
+
+  .header .title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 12px;
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .contact-row .sep { color: #cccccc; }
+
+  /* === SECTION GRID === */
+  .section {
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    column-gap: 26px;
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+  .section:first-of-type { margin-top: 0; }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .section-label::before {
+    content: "";
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: var(--bar);
+    margin-bottom: 7px;
+  }
+
+  .section-body { min-width: 0; }
+
+  /* === SUMMARY === */
+  .summary-text { line-height: 1.65; color: var(--ink-soft); }
+
+  /* === COMPETENCIES === */
+  .competencies {
+    line-height: 1.7;
+    color: var(--ink-soft);
+    font-size: 10.5px;
+  }
+  .competencies .dot { color: #bbbbbb; padding: 0 3px; }
+
+  /* === EXPERIENCE === */
+  .job { margin-bottom: 13px; }
+  .job:last-child { margin-bottom: 0; }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 1px;
+  }
+  .job-company {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .job-company .company-note { font-weight: 400; color: var(--muted); font-size: 10.5px; }
+  .job-period { font-size: 10px; color: var(--faint); white-space: nowrap; }
+  .job-role { font-size: 10.5px; font-weight: 600; color: var(--ink-soft); margin-bottom: 5px; }
+  .job-role .loc { font-weight: 400; color: var(--faint); }
+  .job ul { padding-left: 16px; margin: 0; }
+  .job li { line-height: 1.55; color: var(--ink-soft); margin-bottom: 3px; }
+  .job li::marker { color: #999; }
+
+  /* === PROJECTS === */
+  .project { margin-bottom: 11px; }
+  .project:last-child { margin-bottom: 0; }
+  .project-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .project-title .tag { font-weight: 400; color: var(--muted); font-size: 9.5px; }
+  .project-tech { font-size: 9.5px; color: var(--faint); font-style: italic; margin: 1px 0 4px; }
+  .project ul { padding-left: 16px; margin: 0; }
+  .project li { line-height: 1.5; color: var(--ink-soft); margin-bottom: 3px; }
+  .project li::marker { color: #999; }
+
+  /* === EDUCATION === */
+  .edu-item { margin-bottom: 9px; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .edu-school { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; color: var(--ink); }
+  .edu-loc { font-size: 10px; color: var(--faint); white-space: nowrap; }
+  .edu-degree { font-size: 10.5px; color: var(--ink-soft); }
+  .edu-course { font-size: 9.5px; color: var(--muted); margin-top: 1px; line-height: 1.45; }
+
+  /* === CERTS === */
+  .cert-list { list-style: none; padding: 0; margin: 0; }
+  .cert-list li { position: relative; padding-left: 12px; margin-bottom: 4px; line-height: 1.45; color: var(--ink-soft); }
+  .cert-list li::before { content: ""; position: absolute; left: 0; top: 6px; width: 3px; height: 3px; background: #999; border-radius: 50%; }
+
+  /* === SKILLS === */
+  .skill-line { margin-bottom: 4px; line-height: 1.5; color: var(--ink-soft); }
+  .skill-line:last-child { margin-bottom: 0; }
+  .skill-cat { font-weight: 700; color: var(--ink); }
+
+  /* === PRINT === */
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  .section, .job, .project, .edu-item { break-inside: avoid; page-break-inside: avoid; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img class="photo" src="{{PHOTO}}" alt="Tarun Reddy Alla">
+    <div class="header-text">
+      <h1>Tarun Reddy Alla</h1>
+      <div class="title">Project Coordinator · Software Developer</div>
+      <div class="contact-row">
+        <span>Phoenix, AZ</span>
+        <span class="sep">|</span>
+        <span>(470) 437-2147</span>
+        <span class="sep">|</span>
+        <a href="mailto:tarunreddy.alla1@gmail.com">tarunreddy.alla1@gmail.com</a>
+        <span class="sep">|</span>
+        <a href="https://linkedin.com/in/tarun-reddy-alla">linkedin.com/in/tarun-reddy-alla</a>
+        <span class="sep">|</span>
+        <a href="https://github.com/tarunreddy26">github.com/tarunreddy26</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section">
+    <div class="section-label">Summary</div>
+    <div class="section-body">
+      <div class="summary-text">Software developer and project coordinator with a Master's in Management Information Systems (Project Management coursework) from Northern Arizona University and a B.Tech in Computer Science. Comfortable bridging engineering and business — planning timelines, managing scope and risk, and turning requirements into shipped software. Recently delivered backend and QA work for an early-stage AI startup, where I caught a production-blocking security exploit and coordinated acceptance testing across a monetization sprint. Fluent in Python, SQL, Node.js, and modern web and cloud tools.</div>
+    </div>
+  </div>
+
+  <!-- CORE COMPETENCIES -->
+  <div class="section">
+    <div class="section-label">Core Competencies</div>
+    <div class="section-body">
+      <div class="competencies">Project Planning &amp; Scheduling <span class="dot">·</span> Agile / Scrum <span class="dot">·</span> Sprint Planning <span class="dot">·</span> Stakeholder Coordination <span class="dot">·</span> Risk Management <span class="dot">·</span> QA &amp; Acceptance Testing <span class="dot">·</span> Backend Development <span class="dot">·</span> SQL &amp; Data Analysis</div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-label">Experience</div>
+    <div class="section-body">
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">Oshi</div>
+          <div class="job-period">Mar 2026 – May 2026</div>
+        </div>
+        <div class="job-role">Backend Developer &amp; QA Intern <span class="loc">· Remote</span></div>
+        <ul>
+          <li>Shipped a real-time WebSocket-based text-to-speech streaming backend (Node.js/TypeScript) to Render with CORS whitelisting, rate limiting, and structured logging; load-tested across 20 concurrent sessions with zero connection leaks.</li>
+          <li>Led QA for an in-app purchases / virtual-currency monetization sprint — executed 33 tests across 3 sessions, uncovered a P0 exploit allowing unlimited free in-app items, and signed off all 9 acceptance criteria after fixes.</li>
+          <li>Performed a full backend code review surfacing 16 bugs, including a critical Express middleware-ordering defect that would have broken every Stripe webhook signature verification in production.</li>
+          <li>Designed and deployed a user-state persistence service on Supabase/Postgres with 3 REST endpoints, time-based state decay, and login restore powering the app's real-time reactions.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">EchoformAI <span class="company-note">(Early-Stage AI Startup)</span></div>
+          <div class="job-period">Oct 2025 – Jan 2026</div>
+        </div>
+        <div class="job-role">Founding Engineer <span class="loc">· Remote</span></div>
+        <ul>
+          <li>Helped take an AI product from idea to MVP, coordinating sprint planning and the technical roadmap with a 3-person founding team across product and engineering.</li>
+          <li>Built and deployed LLM-powered inference pipelines (Python, LangChain, AWS) for an initial group of beta users.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-label">Projects</div>
+    <div class="section-body">
+      <div class="project">
+        <div class="project-title">Agile Delivery — Campus Event Registration System <span class="tag">(Project Management)</span></div>
+        <div class="project-tech">Jira / Trello, Scrum, Gantt, Notion</div>
+        <ul>
+          <li>Acted as project manager for a team build: authored the project charter, work breakdown structure (WBS), and risk register, and defined scope with stakeholders.</li>
+          <li>Ran sprint planning, standups, and a retrospective; tracked progress with a Gantt chart and burndown, keeping the team on schedule.</li>
+        </ul>
+      </div>
+      <div class="project">
+        <div class="project-title">Team Task Tracker — Full-Stack Web App</div>
+        <div class="project-tech">React, Node.js / Express, PostgreSQL, Render</div>
+        <ul>
+          <li>Built a Kanban-style task management app with a REST API, user authentication, and drag-and-drop status tracking for assigning and monitoring team work.</li>
+          <li>Deployed to Render with environment-based configuration and input validation.</li>
+        </ul>
+      </div>
+      <div class="project">
+        <div class="project-title">Operations Analytics Dashboard</div>
+        <div class="project-tech">Python, Pandas, SQL, Power BI</div>
+        <ul>
+          <li>Built an ETL pipeline ingesting a public operations dataset into SQL and transforming it with Python/Pandas.</li>
+          <li>Designed an interactive Power BI dashboard surfacing throughput, cycle-time, and cost KPIs with a repeatable refresh process.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-label">Education</div>
+    <div class="section-body">
+      <div class="edu-item">
+        <div class="edu-header">
+          <div class="edu-school">Northern Arizona University</div>
+          <div class="edu-loc">Flagstaff, AZ</div>
+        </div>
+        <div class="edu-degree">Master of Science, Management Information Systems · GPA 3.7/4.0</div>
+        <div class="edu-course">Relevant Coursework: Project Management, Business Analytics, Database Management, Data Visualization, Systems Analysis &amp; Design (SDLC), Statistical Analysis</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-header">
+          <div class="edu-school">Narasaraopet Engineering College</div>
+          <div class="edu-loc">Guntur, India</div>
+        </div>
+        <div class="edu-degree">Bachelor of Technology, Computer Science · GPA 8.63/10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-label">Certifications &amp; Honors</div>
+    <div class="section-body">
+      <ul class="cert-list">
+        <li>Complete Data Wrangling and Data Visualization with Python — Udemy (2024)</li>
+        <li>Introduction to Artificial Intelligence (AI) — Coursera / IBM (2020)</li>
+        <li>International Excellence Award — Northern Arizona University</li>
+        <li>National Silver Medalist — Taekwondo, National-level Competition, Chennai, India</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-label">Skills</div>
+    <div class="section-body">
+      <div class="skill-line"><span class="skill-cat">Project Management:</span> Agile/Scrum, Sprint Planning, Backlog Management, WBS, Gantt Charts, Risk Management, Stakeholder Coordination, Jira, Trello, Notion</div>
+      <div class="skill-line"><span class="skill-cat">Programming:</span> Python, SQL, JavaScript, TypeScript</div>
+      <div class="skill-line"><span class="skill-cat">Backend &amp; Web:</span> Node.js, Express, REST APIs, WebSockets</div>
+      <div class="skill-line"><span class="skill-cat">Data &amp; Analytics:</span> Pandas, NumPy, Power BI, Excel, ETL</div>
+      <div class="skill-line"><span class="skill-cat">Cloud &amp; Tools:</span> AWS, GCP, Docker, Git, Linux, PostgreSQL/Supabase</div>
+      <div class="skill-line"><span class="skill-cat">Quality:</span> Test Planning, Acceptance Testing, Code Review</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
