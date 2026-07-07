@@ -1,6 +1,6 @@
 # Tarun Reddy Alla
 
-**Project Coordinator · Software Developer**
+**Project Manager**
 
 Phoenix, AZ | (470) 437-2147 | tarunreddy.alla1@gmail.com | linkedin.com/in/tarun-reddy-alla | github.com/tarunreddy26
 
