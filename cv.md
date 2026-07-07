@@ -4,6 +4,23 @@
 
 Phoenix, AZ | (470) 437-2147 | tarunreddy.alla1@gmail.com | linkedin.com/in/tarun-reddy-alla | github.com/tarunreddy26
 
+## Certifications & Honors
+
+- AI Fluency: Framework and Foundations — Anthropic (2026)
+- Claude 101 — Anthropic (2026)
+- Complete Data Wrangling and Data Visualization with Python — Udemy (2024)
+- Introduction to Artificial Intelligence (AI) — Coursera / IBM (2020)
+- International Excellence Award — Northern Arizona University
+
+## Education
+
+### Northern Arizona University — Flagstaff, AZ
+Master of Science, Management Information Systems · GPA 3.7/4.0
+Relevant Coursework: Project Management, Business Analytics, Database Management, Data Visualization, Systems Analysis & Design (SDLC), Statistical Analysis
+
+### Narasaraopet Engineering College — Guntur, India
+Bachelor of Technology, Computer Science · GPA 8.63/10
+
 ## Professional Summary
 
 Software developer and project coordinator with a Master's in Management Information Systems from Northern Arizona University and a B.Tech in Computer Science. I bridge engineering and business — planning timelines, managing scope and risk, and turning requirements into shipped software. Recent work spans leading cross-functional delivery of an AI platform and backend/QA for an early-stage startup, fluent in Python, SQL, Node.js, and modern cloud tools.
@@ -52,23 +69,6 @@ Project Planning & Scheduling · Agile / Scrum · Sprint Planning · Stakeholder
 - Built an ETL pipeline ingesting a public operations dataset into SQL and transforming it with Python/Pandas.
 - Automated data cleaning and validation so each refresh produces consistent, analysis-ready inputs.
 - Designed an interactive Power BI dashboard surfacing throughput, cycle-time, and cost KPIs with a repeatable refresh process.
-
-## Education
-
-### Northern Arizona University — Flagstaff, AZ
-Master of Science, Management Information Systems · GPA 3.7/4.0
-Relevant Coursework: Project Management, Business Analytics, Database Management, Data Visualization, Systems Analysis & Design (SDLC), Statistical Analysis
-
-### Narasaraopet Engineering College — Guntur, India
-Bachelor of Technology, Computer Science · GPA 8.63/10
-
-## Certifications & Honors
-
-- AI Fluency: Framework and Foundations — Anthropic (2025)
-- Claude 101 — Anthropic (2025)
-- Complete Data Wrangling and Data Visualization with Python — Udemy (2024)
-- Introduction to Artificial Intelligence (AI) — Coursera / IBM (2020)
-- International Excellence Award — Northern Arizona University
 
 ## Skills
 
