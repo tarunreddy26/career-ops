@@ -23,7 +23,7 @@ Bachelor of Technology, Computer Science · GPA 8.63/10
 
 ## Professional Summary
 
-Software developer and project coordinator with a Master's in Management Information Systems from Northern Arizona University and a B.Tech in Computer Science. I bridge engineering and business — planning timelines, managing scope and risk, and turning requirements into shipped software. Recent work spans leading cross-functional delivery of an AI platform and backend/QA for an early-stage startup, fluent in Python, SQL, Node.js, and modern cloud tools.
+Project manager with a software engineering background and a Master's in Management Information Systems from Northern Arizona University. I bridge engineering and business — planning timelines, managing scope and risk, and turning requirements into shipped software. Recent work spans leading cross-functional delivery of an AI platform and backend/QA for an early-stage startup, fluent in Python, SQL, Node.js, and modern cloud tools.
 
 ## Core Competencies
 
