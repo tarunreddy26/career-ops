@@ -129,7 +129,12 @@ async function generatePDF() {
     console.log(`🧹 ATS normalization: ${totalReplacements} replacements (${breakdown})`);
   }
 
-  const browser = await chromium.launch({ headless: true });
+  // Allow pointing at a pre-installed Chromium (e.g. sandboxed environments where
+  // the bundled browser build doesn't match the installed playwright version).
+  const browser = await chromium.launch({
+    headless: true,
+    ...(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}),
+  });
   try {
     const page = await browser.newPage();
 
