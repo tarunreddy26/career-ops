@@ -3,7 +3,7 @@
 **Software Developer · Project Coordinator · Data Analyst**
 
 Phoenix, AZ | (470) 437-2147 | tarunreddy.alla1@gmail.com
-[linkedin.com/in/tarun-reddy-alla](https://linkedin.com/in/tarun-reddy-alla) | [github.com/tarunreddy26](https://github.com/tarunreddy26)
+[linkedin.com/in/tarun-reddy-alla-6a50a41a8](https://www.linkedin.com/in/tarun-reddy-alla-6a50a41a8) | [github.com/tarunreddy26](https://github.com/tarunreddy26)
 
 > **Source note.** Merged from four documents: `Tarun_Reddy_Alla_Resumepm.pdf` (treated as
 > authoritative on the employment timeline — the only one listing Oshi), plus
@@ -141,18 +141,18 @@ Relevant Coursework: Project Management, Business Analytics, Database Management
 
 ---
 
-## Open conflicts — need your decision
+## Resolved facts
 
-These facts disagree between the PDF and the DOCX resumes. Current CVs use the **first** option
-in each row; tell me to switch any of them and I'll regenerate.
+Confirmed by Tarun on 2026-07-30. These are settled — use them as authoritative over anything
+in the older DOCX or PDF resumes.
 
-| Fact | Used now (from PDF) | Alternative (from DOCX) |
-|---|---|---|
-| EchoformAI end date | Oct 2025 – **Jan 2026** | Oct 2025 – **Present** (conflicts with Oshi, Mar–May 2026) |
-| EchoformAI title | **Co-Founder & ML Engineer** (DOCX) | **Founding Engineer** (PDF) |
-| Location | **Phoenix, AZ** | **Flagstaff, AZ** |
-| LinkedIn URL | `/in/tarun-reddy-alla` | `/in/tarun-reddy-alla-6a50a41a8` |
-| Oshi role | Present, Mar–May 2026 | **Absent from all three DOCX files** |
+| Fact | Confirmed value |
+|---|---|
+| Location | **Phoenix, AZ** |
+| EchoformAI end date | **Jan 2026** (not "Present") |
+| EchoformAI title | **Co-Founder & ML Engineer** |
+| LinkedIn | **https://www.linkedin.com/in/tarun-reddy-alla-6a50a41a8** |
+| Oshi | Real role, Mar–May 2026 — the three DOCX resumes simply predate it |
 
 **Claims worth double-checking before an interview:** the "60% reduction in design iteration
 time" is flagged as an estimate in your own source; the GenAI BI Assistant's "15 hours/week saved
