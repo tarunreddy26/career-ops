@@ -1,0 +1,111 @@
+# Career-Ops Profile — Tarun Reddy Alla
+# Source of truth for personal data across all modes.
+# USER LAYER: never auto-updated by system updates.
+
+candidate:
+  full_name: "Tarun Reddy Alla"
+  email: "tarunreddy.alla1@gmail.com"
+  phone: "+1-470-437-2147"
+  location: "Phoenix, AZ"
+  linkedin: "https://www.linkedin.com/in/tarun-reddy-alla-6a50a41a8"
+  github: "github.com/tarunreddy26"
+  portfolio_url: ""
+
+target_roles:
+  primary:
+    - "Project Coordinator"
+    - "Backend Software Engineer"
+    - "Associate Project Manager"
+  archetypes:
+    - name: "Project / Program Coordinator"
+      level: "Entry-Mid"
+      fit: "primary"
+    - name: "Backend / Full-Stack Software Engineer"
+      level: "Junior-Mid"
+      fit: "primary"
+    - name: "Data / Business Analyst"
+      level: "Entry-Mid"
+      fit: "secondary"
+    - name: "QA / Test Engineer (SDET)"
+      level: "Entry-Mid"
+      fit: "secondary"
+    - name: "Technical Program Manager"
+      level: "Entry"
+      fit: "adjacent"
+    - name: "Solutions / Implementation Engineer"
+      level: "Entry-Mid"
+      fit: "adjacent"
+
+narrative:
+  headline: "Software developer and project coordinator who bridges engineering and business"
+  exit_story: >-
+    MIS Master's with project management coursework layered on a CS undergrad, then
+    proved it in practice at two early-stage startups — shipping backend systems at
+    Oshi while running the QA and acceptance process for a monetization sprint.
+    Looking for a role where I own delivery end to end: planning the work, building
+    part of it, and making sure what ships actually works.
+  superpowers:
+    - "Bridges engineering and business — can write the WBS and the Express middleware"
+    - "Finds what others miss: caught a P0 exploit and a webhook-breaking middleware bug in code review"
+    - "Ships to production solo — WebSocket backend, load-tested, deployed, logged"
+    - "Formal PM toolkit (charter, WBS, risk register, burndown) applied to real software teams"
+  proof_points:
+    - name: "Oshi — P0 monetization exploit"
+      hero_metric: "33 tests / 3 sessions; found unlimited-free-items exploit; signed off 9 acceptance criteria"
+    - name: "Oshi — backend code review"
+      hero_metric: "16 bugs surfaced, incl. middleware-ordering defect that would break every Stripe webhook"
+    - name: "Oshi — real-time TTS streaming backend"
+      hero_metric: "20 concurrent sessions, zero connection leaks"
+    - name: "Campus Event Registration System"
+      hero_metric: "PM for full team build: charter, WBS, risk register, Gantt, burndown — on schedule"
+
+compensation:
+  # USER DIRECTIVE (2026-07-30): no compensation floor. Comp is NOT a filter.
+  # Score offers on fit + sponsorship only. Do not down-score or SKIP on salary.
+  target_range: "Open"
+  currency: "USD"
+  minimum: "None — no floor"
+  filter_on_comp: false
+  location_flexibility: "Remote preferred; Phoenix metro on-site/hybrid fine"
+
+location:
+  country: "United States"
+  city: "Phoenix"
+  state: "AZ"
+  timezone: "MST (Arizona, no DST — UTC-7 year round)"
+  # CONFIRMED 2026-07-30. Drives the single biggest filter in the pipeline.
+  visa_status: "F-1 initial post-completion OPT (12 months) — work-authorized now"
+  opt_type: "initial"
+  needs_sponsorship_eventually: true
+  # 90-day cumulative unemployment limit applies during initial OPT.
+  unemployment_limit_days: 90
+  # STEM OPT would extend 12 -> 36 months, but requires BOTH:
+  #   (a) a STEM-designated CIP code on the I-20, and
+  #   (b) an employer enrolled in E-Verify.
+  # NAU markets the MS MIS as "STEM-designated" (Franke College of Business),
+  # which implies a STEM CIP rather than 52.1201 (MIS General, NOT on the DHS
+  # list). UNVERIFIED — the CIP printed on Tarun's I-20 is the only thing DHS
+  # reads. Confirm with NAU ISSS before treating the 24-month path as real.
+  # CONFIRMED by Tarun 2026-07-30: degree is STEM-designated.
+  stem_opt_eligible: true
+  stem_cip_verified: true
+  total_runway_months: 36   # 12 initial OPT + 24 STEM extension
+  # E-Verify remains mandatory to actually claim the 24-month extension.
+  remote_ok: true
+  relocation: "Open for the right role"
+
+# Hard filters applied during scan/evaluation
+filters:
+  exclude_if_posting_says:
+    - "US Citizen only"
+    - "Must be a US Citizen or Green Card holder"
+    - "No sponsorship available"
+    - "Will not sponsor"
+    - "Active security clearance required"
+    - "Unable to sponsor now or in the future"
+  prefer:
+    # E-Verify is now a hard prerequisite for the 24-month STEM OPT extension,
+    # not a nice-to-have. A non-E-Verify employer caps the runway at 12 months.
+    - "E-Verify employer (REQUIRED for STEM OPT extension)"
+    - "Known H-1B sponsor"
+    - "Cap-exempt (university, nonprofit research, hospital)"
