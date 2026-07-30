@@ -14,8 +14,8 @@ const NAVY = "12355B", BLUE = "1B5E9C", TEAL = "2A9D8F", CHAR = "2E3438",
 
 const SERIF = "Cambria", SANS = "Calibri";
 const FS = { title: 50, sub: 31, present: 27, guide: 23, inst: 21,
-             sec: 29, body: 32, cap: 20, foot: 20, stat: 40, statL: 20, ref: 17,
-             callT: 29, callB: 31 };
+             sec: 33, body: 36, cap: 20, foot: 20, stat: 40, statL: 20, ref: 17,
+             callT: 33, callB: 35 };
 
 const pptx = new pptxgen();
 pptx.defineLayout({ name: "POSTER", width: SW, height: SH });
@@ -53,7 +53,7 @@ const soft    = () => ({ type: "outer", color: "B4B4B4", blur: 4, offset: 2, ang
 
 // ---------- measurement ----------
 function estLines(text, w, fs, indent = 0.34) {
-  const cw = 0.5 * fs / 72;
+  const cw = 0.545 * fs / 72;
   return Math.max(1, Math.ceil(text.length / Math.max(6, (w - indent - 0.12) / cw)));
 }
 function bulletsH(items, w, fs) {
@@ -62,7 +62,7 @@ function bulletsH(items, w, fs) {
   for (const it of items) n += estLines(typeof it === "string" ? it : it.t, w, fs);
   return n * lh + items.length * gap + 0.1;
 }
-function capH(text, w) { return estLines(text, w, FS.cap, 0) * 1.2 * FS.cap / 72 + 0.1; }
+function capH(text, w) { return estLines(text, w, FS.cap, 0) * 1.24 * FS.cap / 72 + 0.2; }
 
 // ---------- primitives ----------
 function bulletRuns(items, fs, color) {
@@ -85,7 +85,7 @@ function headerBar(x, y, colW, num, title) {
 }
 function section(num, title, items, colW) {
   const padX = 0.28, padY = 0.3;
-  const bH = bulletsH(items, colW - 2 * padX, FS.body);
+  const bH = bulletsH(items, colW - 2 * padX, FS.body) * 1.07;
   const natH = HDR_H + bH + 2 * padY;
   return { natH, stretch: true, draw(x, y, h) {
     const hh = h ?? natH;
@@ -245,23 +245,23 @@ const T = {
   investig: [
     { t: "Erect abdominal radiograph demonstrated pneumoperitoneum (Fig 2).", b: true, c: NAVY },
     { t: "Contrast-enhanced CT: free intraperitoneal air, confirming hollow-viscus perforation (Fig 3, arrows).", b: true, c: NAVY },
-    "Findings prompted emergency exploratory laparotomy.",
   ],
   operative: [
     "Emergency exploratory laparotomy performed.",
     { t: "Solitary ileal perforation ≈ 0.5 × 0.5 cm, 40 cm proximal to the ileocaecal junction (Fig 4).", b: true, c: NAVY },
     "Primary closure of the perforation after biopsy from the perforation margin.",
+    { t: "Outcome: the patient recovered from the acute surgical episode.", b: true, c: NAVY },
+    { t: "[Editable placeholder — staging, receptor status (ER/PR/HER2), adjuvant treatment, follow-up]", i: true, c: "6B7280" },
   ],
   histo: [
     { t: "Trucut biopsy of the breast lump: invasive ductal carcinoma (Fig 5).", b: true, c: NAVY },
     { t: "Ileal perforation-margin biopsy: metastatic deposits (Fig 6).", b: true, c: NAVY },
     "Deposits at the perforation site establish metastatic carcinoma — rather than NSAID-related injury — as the cause of the perforation.",
-    "Stains: haematoxylin and eosin (H&E).",
   ],
   discussion: [
     "The gastrointestinal tract is an unusual site for breast metastasis; the small bowel is rarer still, and perforation as the initial manifestation is exceptional.",
     "Diagnostic trap: acute peritonitis overshadows the primary, and the breast lump had been dismissed as an abscess — delaying the true diagnosis.",
-    "Reported practice confirms breast origin of a gastrointestinal metastasis immunohistochemically (GATA3, GCDFP-15, mammaglobin, oestrogen receptor); E-cadherin positivity favours ductal type. [5]",
+    "Breast origin is confirmed immunohistochemically (GATA3, GCDFP-15, mammaglobin, ER); E-cadherin favours ductal type. [5]",
     "Management requires emergency surgery followed by evaluation and treatment of the primary breast malignancy.",
   ],
   differential: [
@@ -309,9 +309,10 @@ function imgPair(colW, k1, k2, f1, c1, f2, c2) {
   const g = 0.4;
   const inv = 1 / IMG[k1].r + 1 / IMG[k2].r;
   const maxH = Math.min((colW - g) / inv, IMG[k1].dpiMaxH, IMG[k2].dpiMaxH);
-  const w1max = maxH / IMG[k1].r, w2max = maxH / IMG[k2].r;
-  const cH = Math.max(capH(f1 + "  " + c1, w1max), capH(f2 + "  " + c2, w2max));
-  const chrome = 0.1 + 0.14 + cH;
+  // One caption spanning the whole column: measured at the width it is drawn at,
+  // so it can never be clipped when the images scale down.
+  const cH = capH(f1 + "  " + c1 + "     " + f2 + "  " + c2, colW);
+  const chrome = 0.1 + 0.18 + cH;
   return { elastic: true, baseH: maxH, maxH, chrome, natH: maxH + chrome,
     draw(x, y, ih) {
       const h = ih ?? maxH;
@@ -319,8 +320,12 @@ function imgPair(colW, k1, k2, f1, c1, f2, c2) {
       const tot = w1 + w2 + g, sx = x + (colW - tot) / 2;
       frame(sx, y + 0.05, w1, k1);
       frame(sx + w1 + g, y + 0.05, w2, k2);
-      legend(sx, y + h + 0.19, w1, f1, c1);
-      legend(sx + w1 + g, y + h + 0.19, w2, f2, c2);
+      s.addText([
+        { text: f1 + "  ", options: { fontFace: SANS, fontSize: FS.cap, bold: true, color: NAVY, breakLine: false } },
+        { text: c1 + "      ", options: { fontFace: SANS, fontSize: FS.cap, italic: true, color: CAPGREY, breakLine: false } },
+        { text: f2 + "  ", options: { fontFace: SANS, fontSize: FS.cap, bold: true, color: NAVY, breakLine: false } },
+        { text: c2, options: { fontFace: SANS, fontSize: FS.cap, italic: true, color: CAPGREY, breakLine: true } },
+      ], { x, y: y + h + 0.23, w: colW, h: cH, valign: "top", align: "center", margin: 0 });
     } };
 }
 
@@ -338,7 +343,7 @@ const e1 = fill(c1X, bodyTop, bodyBottom, col1);
 const col2 = [
   section(4, "Investigations", T.investig, c2W),
   imgPair(c2W, "xray", "ct", "Fig 2.", "Erect abdominal radiograph — pneumoperitoneum.", "Fig 3.", "Contrast-enhanced CT — arrows indicate free intraperitoneal air (pneumoperitoneum)."),
-  section(5, "Operative Findings", T.operative, c2W),
+  section(5, "Operative Findings & Outcome", T.operative, c2W),
   imgBlock(c2W, "intraop", "Fig 4.", "Intraoperative photograph — solitary ileal perforation, 40 cm proximal to the ileocaecal junction.", 0.30),
   section(6, "Histopathology", T.histo, c2W),
   imgPair(c2W, "bhpe", "ihpe", "Fig 5.", "Breast trucut biopsy — invasive ductal carcinoma (H&E).", "Fig 6.", "Ileal biopsy — metastatic deposits at the perforation site (H&E)."),
@@ -348,7 +353,6 @@ const e2 = fill(c2X, bodyTop, bodyBottom, col2);
 // ---------- COLUMN 3 : sections 7-9 ----------
 const col3 = [
   section(7, "Discussion", T.discussion, c3W),
-  callout("Management & Outcome", T.outcome, c3W, { fill: BLUETINT, line: BLUE, tcol: NAVY, bcol: "24384F" }),
   callout("Key Message", T.keymsg, c3W, { fill: TEALTINT, line: TEAL, tcol: NAVY, bcol: "1E4A44" }),
   section(8, "Conclusion", T.conclusion, c3W),
   refsSection(9, "References", T.refs, c3W),
