@@ -1,0 +1,69 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Mock ATS Application Form</title></head>
+<body>
+<h1>Apply — Software Engineer I</h1>
+<form id="app">
+  <p><label for="first_name">First Name *</label><input id="first_name" name="first_name"></p>
+  <p><label for="last_name">Last Name *</label><input id="last_name" name="last_name"></p>
+  <p><label for="email">Email *</label><input id="email" name="email" type="email"></p>
+  <p><label for="phone">Phone</label><input id="phone" name="phone" type="tel"></p>
+  <p><label for="loc">Current Location</label><input id="loc" name="location"></p>
+  <p><label for="li">LinkedIn Profile</label><input id="li" name="linkedin"></p>
+  <p><label for="gh">GitHub URL</label><input id="gh" name="github"></p>
+
+  <!-- Polarity trap 1: authorized -> Yes -->
+  <p><label for="auth">Are you legally authorized to work in the United States? *</label>
+    <select id="auth" name="auth"><option value=""></option><option>Yes</option><option>No</option></select></p>
+
+  <!-- Polarity trap 2: sponsorship now-or-future -> Yes -->
+  <p><label for="spon">Will you now or in the future require sponsorship for employment visa status? *</label>
+    <select id="spon" name="spon"><option value=""></option><option>Yes</option><option>No</option></select></p>
+
+  <!-- Polarity trap 3: sponsorship to BEGIN -> No -->
+  <fieldset><legend>Do you require sponsorship to begin employment?</legend>
+    <label><input type="radio" name="spon_now" value="y"> Yes</label>
+    <label><input type="radio" name="spon_now" value="n"> No</label>
+  </fieldset>
+
+  <p><label for="relo">Are you willing to relocate?</label>
+    <select id="relo" name="relo"><option value=""></option><option>Yes</option><option>No</option></select></p>
+
+  <p><label for="salary">Desired Salary</label><input id="salary" name="salary"></p>
+  <p><label for="start">Earliest start date</label><input id="start" name="start"></p>
+  <p><label for="yrs">Years of relevant experience</label><input id="yrs" name="yrs"></p>
+  <p><label for="school">School</label><input id="school" name="school"></p>
+  <p><label for="heard">How did you hear about us?</label><input id="heard" name="heard"></p>
+
+  <p><label for="cover">Cover Letter</label><br><textarea id="cover" name="cover" rows="5" cols="60"></textarea></p>
+
+  <!-- Pre-filled: must NOT be overwritten -->
+  <p><label for="pref">Preferred Name</label><input id="pref" name="pref" value="DO-NOT-OVERWRITE"></p>
+
+  <!-- File upload: cannot be scripted -->
+  <p><label for="resume">Resume *</label><input id="resume" name="resume" type="file"></p>
+
+  <!-- Consent: must NOT be auto-checked -->
+  <p><label><input type="checkbox" id="consent" name="consent"> I agree to the privacy policy</label></p>
+
+  <button type="submit" id="submitBtn">Submit Application</button>
+</form>
+
+<script>
+  // Track whether anything ever tried to submit.
+  window.__submitted = false;
+  document.getElementById('app').addEventListener('submit', function (e) {
+    e.preventDefault(); window.__submitted = true;
+  });
+  document.getElementById('submitBtn').addEventListener('click', function () { window.__submitted = true; });
+
+  // Simulate a React-controlled input: record whether a real 'input' event fired.
+  // React ignores direct .value assignment, so a script that does not dispatch
+  // 'input' would silently lose the value on a real Greenhouse/Lever form.
+  window.__inputEvents = {};
+  ['first_name','email','cover','salary'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () {
+      window.__inputEvents[id] = true;
+    });
+  });
+</script>
+</body></html>
